@@ -1,0 +1,206 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports and Setup     %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../lib/hw-setup/tex/HWSetup}
+\input{../lib/hw-setup/tex/EngBindings}
+\usepackage{cleveref}
+
+\fancyhead[C]{}
+\fancyhead[R]{\hyperlink{tableofcontents}{\hmwkClass\ (\hmwkClassInstructor,\ \hmwkClassTime): \hmwkTitle}}
+\fancyheadwidth[L]{0.5\headwidth}
+\fancyheadwidth[C]{0.0\headwidth}
+\fancyheadwidth[R]{0.5\headwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Homework Details      %
+% - Title               %
+% - Subtitle            %
+% - Due Date            %
+% - Due Time            %
+% - Course              %
+% - Section Time        %
+% - Instructor          %
+% - Author              %
+% - Submission Time     %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hwkTitle{Lab06}
+\hwkSubTitle{Transonic Flow in a Quasi-1D Nozzle}
+\hwkDueDate{2026-05-08}
+\hwkDueTime{23:59:00}
+\hwkClass{ENAE464 - 0202}
+\hwkClassTime{14:00:00}
+\hwkInstructor{Dr. Silbaugh}
+\hwkAuthor{Mikołaj Kostrzewa \& Vai Srivastava}
+\hwkCompletionDate{
+    Report Submitted: \DTMtoday
+}
+
+\addbibresource{./references.bib}
+
+\begin{document}
+
+\hypertarget{titlepage}{\maketitle}
+\thispagestyle{empty}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Letter of Transmittal %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+
+\DTMtoday
+
+\vspace{5.0ex}
+
+Enclosed is the technical report for the \textit{Transonic Flow in a Quasi-1D Nozzle} computational experiment. This report presents the computational methodology, results, and analysis of flow characteristics and effects for a quasi-1D nozzle subjected to transonic flow.
+
+Please feel free to contact us with any questions regarding the contents of this report.
+
+\vspace{5.0ex}
+
+Respectfully,
+
+Mikołaj Kostrzewa \& Vai Srivastava
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents     %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagebreak
+
+\thispagestyle{empty}
+\hypertarget{tableofcontents}{\tableofcontents}
+
+\renewcommand{\listfigurename}{Figures}
+\listoffigures
+
+\renewcommand{\listtablename}{Tables}
+\listoftables
+
+\renewcommand{\listlistingname}{Listings}
+\listoflistings
+
+\newpage
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Report                %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Abstract} \label{sec:abstract}
+
+% TODO:
+% - add abstract
+
+\section{Introduction} \label{sec:introduction}
+
+% TODO:
+% - introduction of problem and theory
+
+\subsection{Theoretical Background} \label{sec:introduction/theory}
+
+% TODO:
+% - theory behind quasi-1d nozzle flow
+
+\subsection{Objectives} \label{sec:introduction/objectives}
+
+% TODO:
+% - brief description of the problem (our desired products of the analysis)
+
+The specific objectives of this experiment are:
+\begin{enumerate}
+    \item foo
+\end{enumerate}
+
+\section{Methodology and Implementation} \label{sec:methodology}
+
+% TODO:
+% - describe the computer code implementation
+% - make sure to mention what type of computer was used (a MacBook Pro with the Apple M1 Pro chip, running 16GB of RAM)
+% - please modify `sample.m` and `quasi1d.m` to produce the following requested results. as part of this, we may need to write some of our own MATLAB code and/or clean-up the existing code in the src directory (especially making sure that all plots are clearly labeled with appropriate titles and axis labels)
+
+\section{Results} \label{sec:results}
+
+\subsection{Nozzle Geometry} \label{sec:results/nozzle-geometry}
+
+% TODO:
+% - include one plot that shows the nozzle geometry examined ($plus.minus r(x) vs. x$). since we are considering a round jet, $A = pi r^2$. clearly label the plot and refer to it in the text
+
+\subsection{Space Marching} \label{sec:results/space-marching}
+
+% TODO:
+% - on one plot:
+%     - pressure vs x for a fixed shock location, $x_"sh" = 40$, and for a fixed total number of points $j_"max" = 81, (i_"refine" = 2)$
+%     - the results from using just the predictor in space marching and from using the predictor-corrector
+% - on a second plot, do the same as above but with $j_"max" = 41, (i_"refine" = 1)$ and note any comments
+% - on a third plot, display the pressure versus x for the shock location varying as $x_"sh" = 3:0.5:9$ for $j_"max" = 161, (i_"refine" = 4)$ and using the predictor-corrector for space marching (all 7 pressure distributions for the 7 shock locations)
+% - on a fourth plot, display the resulting exit pressure as a function of the shock location. comment on how this varies, and if it holds up with compressible-flow theory
+
+\subsection{Shock Capturing} \label{sec:results/shock-capturing}
+
+\subsubsection{Steady Flow} \label{sec:results/shock-capturing/steady-flow}
+
+% TODO:
+% - assume these steady problems with shock capturing that initialize with $x_"sh" = 3.125$ which should give exit pressure of $1/gamma_"atmospheric"$. to keep the flow steady towards the end,  we can set variation of exit pressure to zero ($dif p_"var" = 0.0$)
+% - plot pressure vs. x for an exit pressure of $1/gamma_"atmospheric"$ w/ $j_"max" = 81, (i_"refine" = 2)$ calculated using the van Leer flux splitting and compare to that form space marching using the predictor-corrector. this is what is calculated before the unsteady pressure is applied at the exit
+% - repeat the above on a new plot, but with $j_"max" = 161, (i_"refine" = 4)$. where is the shock located?
+% - how is the shock capturing solution different from the shock marching solution?
+
+\subsubsection{Unsteady Flow} \label{sec:results/shock-capturing/unsteady-flow}
+
+% TODO:
+% - assume for all of these unsteady problems that $x_"sh" = 3.125$
+% - plot the envelope of pressure vs. x for a sinusoidal variation of the exit pressure of 10% ($dif p_"var" = 0.1$) for $j_"max" = 161, (i_"refine" = 4)$ for a moderate time period ($"timeper" = 1$) for the final six periods ($"iper" = 6$)
+% - in addition, plot the pressure vs. time just downstream of the predicted shock location (at $x = x_"sh" + 0.05*x_"length"$ for the six periods. comments?
+% repeat the above two plots for a longer time period ($"timeper" = 2$). comments?
+% repeat again but for a shorter time period ($"timeper" = 1/2$). comments?
+% repeat the moderate time period plots ($"timeper" = 1$) except for a smaller exit pressure variation of only 2% ($dif p_"var" = 0.02$). comments?
+% now repeat the moderate time period ($"timeper" = 2$) with a very large exit pressure variation of 20% ($dif p_"var" = 0.2$). what is happening? comments?
+% for the original moderate case ($"timeper" = 1, dif p_"var" = 0.1$), plot the Mach number vs. x. does this tell we anything else other than what we learned from our other pressure vs. x plots?
+
+\section{Analysis and Discussion} \label{sec:analysis}
+
+% TODO:
+% - discuss the solutions
+% - how could we verify the accuracy of the space marching methods?
+% - how could we verify the unsteady solutions?
+% - were the chosen parameters sufficient for understanding steady and unsteady nozzle flow?
+% - what did we learn from this numerical exercise?
+% - what do we think are the advantages/disadvantages of using MATLAB versus Python or C?
+% - how could we make this numerical experiment better in the future?
+
+\section{Summary and Conclusions} \label{sec:summary}
+
+% TODO:
+% - add summary & conclusions
+
+\section{References} \label{sec:references}
+
+\printbibliography[heading=none]
+
+\section{Appendices} \label{sec:appendices}
+
+\subsection{Data} \label{sec:appendices/data}
+
+For the sake of brevity, the raw data will not be displayed in this report. However, in the spirit of completeness, the repository containing the complete data, source code, and notes for this report can be found at \href{https://www.github.com/vaisriv/enae464-lab06}{github:vaisriv/enae464-lab06}.
+
+\subsection{Code} \label{sec:appendices/code}
+
+Similarly, only the code files that are key to the analysis are included below, and can be accessed in full in the aforementioned \href{https://www.github.com/vaisriv/enae464-lab05}{GitHub repository}.
+
+\begin{codeblock}
+    \centering
+    \caption{Computational Analysis Script.}
+    \mintinline{bash}{./src/index.m}
+    \inputminted{matlab}{../src/index.m}
+    \label{lst:appendices/code/index}
+\end{codeblock}
+
+% render all references
+\nocite{*}
+
+\end{document}
